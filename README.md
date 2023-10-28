@@ -28,6 +28,8 @@ https://www.switch-science.com/products/7996
 
 ## ILI9341
 ※今回使用するILI9431の動作電圧は3V3の為、IO voltage jumperを3V3側に設定する事
+https://developer.sony.com/spresense/development-guides/images/connect_ili9341.png
+
 
 ## A4988 stepper motor driver
 
