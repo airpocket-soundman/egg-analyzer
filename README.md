@@ -20,7 +20,8 @@ LovyanGFXライブラリ内の/src/lgfx_user/LGFX_SPRESENSE_sample.hppに、spre
 ## Spresense main board
 
 ## Spresense extention board
-※今回使用するILI9431の動作電圧は3V3の為、IO voltage jumperを3V3側に設定する事
+※今回使用するILI9431の動作電圧は3V3の為、IO voltage jumperを3V3側に設定する事  
+![pinout](https://docs.neqto.com/images/spresense_hw_pinout_exboard.png)
 
 
 ## B-stem 4CM01 SPRESENSE用4chマイク基板
