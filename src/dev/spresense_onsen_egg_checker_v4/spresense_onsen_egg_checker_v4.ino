@@ -165,15 +165,27 @@ void loop() {
     Serial.println(output.maxIndex());
     Serial.print("\noutput.maxIndex()=");
     Serial.println(output[output.maxIndex()]);
-    for (int i = 0; i < 10; i++){
+    for (int i = 0; i < 3; i++){
       Serial.println(output[i]);
       lcd.printf("\ni:");
       lcd.print(i);
       lcd.printf("  value:");
       lcd.print(output[i]);
     }
+    lcd.setCursor(0,220);
+
+    lcd.setFont(&fonts::Font4);
+    if (output.maxIndex() == 0){
+      lcd.print("This is RAW EGG.");
+    } else if (output.maxIndex() == 1){
+      lcd.print("This is ONSEN EGG!");
+    } else if (output.maxIndex() == 2){
+      lcd.print("This is BOILED EGG.");
+    }
+    lcd.setFont(&fonts::Font0);
+
   } else if (SW1State == HIGH && SW1StateOld == LOW) {
-    lcd.printf("set ONSEN TAMAGO and push SW1 to mesure OT Scale!");
+    lcd.printf("set TAMAGO and push start SW");
   }
 }
 

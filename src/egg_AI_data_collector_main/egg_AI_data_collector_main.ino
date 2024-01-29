@@ -1,20 +1,22 @@
-//use spresense_stepper_ameter_subcore_v6.ino
-//use spresense_onsen_egg_checker_v3.ino
+//たまごAI学習用データ収集用コード
+//sbucore1には egg_AI_sub.inoを使用
+//推論には　egg_AI_main.inoを使用
+
 #ifdef SUBCORE
 #error "Core selection is wrong!!"
 #endif
 
 // データ格納用変数
-#define TOTAL_MESUREMENTS 1024              //測定回数
-#define MESUREMENT_CYCLE 2500               //測定頻度 us秒/回
-#define MESURE_START_DELAY 250000           //モータースタートから測定開始までのディレイタイム　usec
+#define TOTAL_MESUREMENTS   1024              //測定回数
+#define MESUREMENT_CYCLE    2500               //測定頻度 us秒/回
+#define MESURE_START_DELAY  250000           //モータースタートから測定開始までのディレイタイム　usec
 int freq = 1000000 / MESUREMENT_CYCLE;
 
 // スタート一回押した場合の繰り返し測定数
-#define MESUREMENT_NUMBER 10
+#define MESUREMENT_NUMBER   100
 
 // カットオフ周波数（ハイパス
-#define CUTOFF 20
+#define CUTOFF 0
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -29,7 +31,6 @@ static LGFX lcd;                                  //ディスプレイインス�
 double vReal[TOTAL_MESUREMENTS];                  // vReal[]にサンプリングしたデータを入れる
 double vImag[TOTAL_MESUREMENTS];
 arduinoFFT FFT = arduinoFFT(vReal, vImag, TOTAL_MESUREMENTS, freq);  // FFTオブジェクトを作る
-
 
 #include <File.h>                                 //ファイル操作
 #include <SDHCI.h>                                //microSD操作
@@ -49,21 +50,8 @@ int number = 0;       //測定の通し番号
 
 //gpio 定義
 const int SW1Pin = 4;
-const int SW2Pin = 6;
-const int SW3Pin = 5;
-const int SW4Pin = 7;
-const int SW5Pin = 3;
 int SW1State    = LOW;
-int SW2State    = LOW;
-int SW3State    = LOW;
-int SW4State    = LOW;
-int SW5State    = LOW;
 int SW1StateOld = LOW;
-int SW2StateOld = LOW;
-int SW3StateOld = LOW;
-int SW4StateOld = LOW;
-int SW5StateOld = LOW;
-
 
 void setup() {
   Wire.begin();                 //i2cを有効化
@@ -90,10 +78,6 @@ void setup() {
 
   //Switch pin 設定
   pinMode(SW1Pin, INPUT_PULLUP);
-  pinMode(SW2Pin, INPUT_PULLUP);
-  pinMode(SW3Pin, INPUT_PULLUP);
-  pinMode(SW4Pin, INPUT_PULLUP);
-  pinMode(SW5Pin, INPUT_PULLUP);
 
   lcd.init();                       //ili9431を初期化
   lcd.setRotation(1);               //右へ90°回転
@@ -103,14 +87,6 @@ void loop() {
   double am_value_local[TOTAL_MESUREMENTS];
   SW1StateOld = SW1State;
   SW1State = digitalRead(SW1Pin);
-  SW2StateOld = SW2State;
-  SW2State = digitalRead(SW2Pin);
-  SW3StateOld = SW3State;
-  SW3State = digitalRead(SW3Pin);
-  SW4StateOld = SW4State;
-  SW4State = digitalRead(SW4Pin);
-  SW5StateOld = SW5State;
-  SW5State = digitalRead(SW5Pin);
 
   lcd.setCursor(0,0);
 
@@ -149,49 +125,14 @@ void loop() {
       //drawGraph(am_value); 
       drawGraph(vReal);
       Serial.println("saveData");
-
-
       saveData();
-      
     }
-
   } else if (SW1State == HIGH && SW1StateOld == LOW) {
     lcd.printf("HIGH");
   }
-
-  lcd.setCursor(0,20);
-  if (SW2State == LOW && SW2StateOld == HIGH){
-    lcd.printf("LOW ");
-  } else if (SW2State == HIGH && SW2StateOld == LOW) {
-    lcd.printf("HIGH");
-  }
-
-  lcd.setCursor(0,40);
-  if (SW3State == LOW && SW3StateOld == HIGH){
-    lcd.printf("LOW ");
-        
-    double current = ammeter.getCurrent();
-    MPLog("Cal volt: %.2f mA             \r\n", current);
-  } else if (SW3State == HIGH && SW3StateOld == LOW) {
-    lcd.printf("HIGH");
-  }
-
 }
 
-void dummy_data(){
-  double current;
-  int elapsedTime = 2000;
-  for (int i = 0; i<1024 ; i++){
-    current = sin( double(i) / 100 * PI) + sin(double(i)/10 * PI) * 0.5 + sin(double(i)/3 * PI) * 0.01;
-
-    am_value[i] = current;
-    vReal[i] = current;
-    vImag[i] = 0;
-
-  }
-
-}
-
+//電流測定
 void mesure_current(){
   double current;
   int now;
@@ -225,7 +166,7 @@ void mesure_current(){
   Serial.println(elapsedTime);
 }
 
-
+//正規化
 void normalization (double *data, int sample_num){
   double minValue = data[0];
   double maxValue = data[0];
@@ -241,9 +182,9 @@ void normalization (double *data, int sample_num){
   for (int i = 0; i < sample_num; i++) {
     data[i] = (data[i] - minValue) / (maxValue - minValue);
   }
-
 }
 
+// 測定データをmicroSDに保存
 void saveData(){
   SD.begin();
   char fname[16];
@@ -289,6 +230,7 @@ void saveData(){
   number++;
 }
 
+//グラフ描画
 void drawGraph(double *data){
   lcd.fillScreen(lcd.color888(0, 0, 0));
   double max = data[0];
@@ -317,6 +259,7 @@ void drawGraph(double *data){
   }
 }
 
+//直流成分除去
 void DCRemoval(double *data, int sample_num) {
   double mean = 0;
   for (uint16_t i = 1; i < sample_num; i++) {
