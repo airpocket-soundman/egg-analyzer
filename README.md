@@ -20,27 +20,29 @@ LovyanGFXライブラリ内の/src/lgfx_user/LGFX_SPRESENSE_sample.hppに、spre
 BOM
 |名前|数量|備考|
 |-|-|-|
-|SPRESENSE メインボード|1||
-|SPRESENSE 拡張ボード|1||
-|ILI9341 2.8" TFT LCD|1||
-|A4988 ドライバボード|1||
-|Nema17 ステッピングモータ|1||
-|M5Stack用電流計ユニット|1||
+|SPRESENSE メインボード|1|(switch science)[https://www.switch-science.com/products/3900]|
+|SPRESENSE 拡張ボード|1|(switch science)[https://www.switch-science.com/products/3901]|
+|ILI9341 2.2" TFT LCD|1|amazonなどから|
+|A4988 ドライバボード|1|amazonなどから|
+|Nema17 HS4023|1|[秋月電子](https://akizukidenshi.com/catalog/g/g105372/)|
+|M5Stack用電流計ユニット|1|(switch science)[https://www.switch-science.com/products/6739]|
 |60mmx80mm ユニバーサル基板|1||
-|M2x10 ボルト|12||
-|M2x5 ボルト|4||
-|M3x10 ボルト|6||
-|タクトスイッチ|1||
-|XHコネクタメス|適量|ケーブル側|
-|XHコネクタオス|適量|ユニバーサル基板側|
-|QIコネクタオス|適量|SPRESENSE接続用|
-|CASING BASE|1|3Dプリンタ出力|
-|CASING TOP MOTOR|1|3Dプリンタ出力|
-|CASING TOP DISPLAY|1|3Dプリンタ出力|
-|EGG HOLDER BASE|1|3Dプリンタ出力|
-|EGG HOLDER TOP|1|3Dプリンタ出力|
-
-
+|M2x10 ボルト|8|基板固定用|
+|M3x5 皿ボルト|4|ステッピングモーター固定用|
+|M3x10 ボルト|6|トップパネル固定用|
+|タクトスイッチ|1|[秋月電子](https://akizukidenshi.com/catalog/g/g115660/)|
+|φ2.1×φ5.5電源ジャック|1|[秋月電子](https://akizukidenshi.com/catalog/g/g106568/)|
+|XHコネクタオス/メス 2P|1||
+|XHコネクタオス/メス 3P|1||
+|XHコネクタオス/メス 4P|4||
+|XHコネクタオス/メス 5P|1||
+|QIコネクタオス 2P|1||
+|QIコネクタオス 8P|1||
+|CASING BASE|1|3Dプリンタ出力※|
+|CASING TOP MOTOR|1|3Dプリンタ出力※|
+|CASING TOP DISPLAY|1|3Dプリンタ出力※|
+|EGG HOLDER BASE|1|3Dプリンタ出力※|
+|EGG HOLDER TOP|1|3Dプリンタ出力※|
 
 
 ## Spresense main board
