@@ -1,0 +1,29 @@
+2024-01-28 22:21:44,733 Evaluation process is started.
+python "C:\Users\yamas\Desktop\tools\neural_network_console\libs\Python\Lib\site-packages\nnabla\utils\cli\cli.py" forward
+	-c "C:\Users\yamas\Desktop\20240128\3class_onsen.files\20240128_211744\results.nnp"
+	-d "C:\Users\yamas\Desktop\20240128\egg_data_set_valid_3class_onsen.csv"
+	-o "C:\Users\yamas\Desktop\20240128\3class_onsen.files\20240128_211744"
+	--replace_path
+2024-01-28 22:21:46,946 [nnabla]: [CALLBACK]: Exec forward on local
+2024-01-28 22:21:46,962 [nnabla]: Using context "Context(backend=['cpu:float'], array_class='CpuCachedArray', device_id='')"
+2024-01-28 22:21:47,167 [nnabla]: data 64 / 1200
+2024-01-28 22:21:47,340 [nnabla]: data 128 / 1200
+2024-01-28 22:21:47,524 [nnabla]: data 192 / 1200
+2024-01-28 22:21:47,702 [nnabla]: data 256 / 1200
+2024-01-28 22:21:47,874 [nnabla]: data 320 / 1200
+2024-01-28 22:21:48,051 [nnabla]: data 384 / 1200
+2024-01-28 22:21:48,193 [nnabla]: data 448 / 1200
+2024-01-28 22:21:48,347 [nnabla]: data 512 / 1200
+2024-01-28 22:21:48,526 [nnabla]: data 576 / 1200
+2024-01-28 22:21:48,703 [nnabla]: data 640 / 1200
+2024-01-28 22:21:48,876 [nnabla]: data 704 / 1200
+2024-01-28 22:21:49,050 [nnabla]: data 768 / 1200
+2024-01-28 22:21:49,227 [nnabla]: data 832 / 1200
+2024-01-28 22:21:49,406 [nnabla]: data 896 / 1200
+2024-01-28 22:21:49,584 [nnabla]: data 960 / 1200
+2024-01-28 22:21:49,759 [nnabla]: data 1024 / 1200
+2024-01-28 22:21:49,936 [nnabla]: data 1088 / 1200
+2024-01-28 22:21:50,111 [nnabla]: data 1152 / 1200
+2024-01-28 22:21:50,251 [nnabla]: data 1200 / 1200
+2024-01-28 22:21:50,267 [nnabla]: Forward Completed.
+NNabla command line interface (Version:1.33.1, Build:230206070804, Callback:NNabla SSH callback module.)

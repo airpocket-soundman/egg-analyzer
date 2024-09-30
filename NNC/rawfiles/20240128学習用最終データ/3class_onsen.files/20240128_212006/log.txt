@@ -1,0 +1,4 @@
+2024-01-28 21:20:06,510 Training process is started.
+python "C:\Users\yamas\Desktop\tools\neural_network_console\libs\Python\Lib\site-packages\nnabla\utils\cli\cli.py" train
+	-c "C:\Users\yamas\Desktop\20240128\3class_onsen.files\20240128_212006\net.nntxt"
+	-o "C:\Users\yamas\Desktop\20240128\3class_onsen.files\20240128_212006"
