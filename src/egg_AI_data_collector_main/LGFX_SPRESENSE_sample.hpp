@@ -4,58 +4,12 @@
 
 #include <LovyanGFX.hpp>
 
-// SPRESENSEでLovyanGFXを独自設定で利用する場合の設定例
-
-/*
-このファイルを複製し、新しい名前を付けて、環境に合わせて設定内容を変更してください。
-作成したファイルをユーザープログラムからincludeすることで利用可能になります。
-
-複製したファイルはライブラリのlgfx_userフォルダに置いて利用しても構いませんが、
-その場合はライブラリのアップデート時に削除される可能性があるのでご注意ください。
-
-安全に運用したい場合はバックアップを作成しておくか、ユーザープロジェクトのフォルダに置いてください。
-//*/
-
-
-/// 独自の設定を行うクラスを、LGFX_Deviceから派生して作成します。
+// 独自の設定を行うクラスを、LGFX_Deviceから派生して作成します。
 class LGFX : public lgfx::LGFX_Device
 {
-/*
- クラス名は"LGFX"から別の名前に変更しても構いません。
- AUTODETECTと併用する場合は"LGFX"は使用されているため、LGFX以外の名前に変更してください。
- また、複数枚のパネルを同時使用する場合もそれぞれに異なる名前を付けてください。
- ※ クラス名を変更する場合はコンストラクタの名前も併せて同じ名前に変更が必要です。
-
- 名前の付け方は自由に決めて構いませんが、設定が増えた場合を想定し、
- 例えば SPRESENSE でSPI接続のILI9341の設定を行った場合、
-  LGFX_SPRESENSE_SPI_ILI9341
- のような名前にし、ファイル名とクラス名を一致させておくことで、利用時に迷いにくくなります。
-//*/
-
 
 // 接続するパネルの型にあったインスタンスを用意します。
-//lgfx::Panel_GC9A01      _panel_instance;
-//lgfx::Panel_GDEW0154M09 _panel_instance;
-//lgfx::Panel_HX8357B     _panel_instance;
-//lgfx::Panel_HX8357D     _panel_instance;
-//lgfx::Panel_ILI9163     _panel_instance;
   lgfx::Panel_ILI9341     _panel_instance;
-//lgfx::Panel_ILI9342     _panel_instance;
-//lgfx::Panel_ILI9481     _panel_instance;
-//lgfx::Panel_ILI9486     _panel_instance;
-//lgfx::Panel_ILI9488     _panel_instance;
-//lgfx::Panel_IT8951      _panel_instance;
-//lgfx::Panel_SH110x      _panel_instance; // SH1106, SH1107
-//lgfx::Panel_SSD1306     _panel_instance;
-//lgfx::Panel_SSD1327     _panel_instance;
-//lgfx::Panel_SSD1331     _panel_instance;
-//lgfx::Panel_SSD1351     _panel_instance; // SSD1351, SSD1357
-//lgfx::Panel_SSD1963     _panel_instance;
-//lgfx::Panel_ST7735      _panel_instance;
-//lgfx::Panel_ST7735S     _panel_instance;
-//lgfx::Panel_ST7789      _panel_instance;
-//lgfx::Panel_ST7796      _panel_instance;
-
 
 // SPIバスのインスタンスを用意します。
   lgfx::Bus_SPI       _bus_instance;   // SPIバスのインスタンス
